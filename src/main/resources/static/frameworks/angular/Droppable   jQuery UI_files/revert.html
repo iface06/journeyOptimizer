@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://jqueryui.com/resources/demos/droppable/revert.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>jQuery UI Droppable - Revert draggable position</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="jquery-1.10.2.js"></script>
+	<script src="jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+	<style>
+	#draggable, #draggable2 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+	#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+	</style>
+	<script>
+	$(function() {
+		$( "#draggable" ).draggable({ revert: "valid" });
+		$( "#draggable2" ).draggable({ revert: "invalid" });
+
+		$( "#droppable" ).droppable({
+			activeClass: "ui-state-default",
+			hoverClass: "ui-state-hover",
+			drop: function( event, ui ) {
+				$( this )
+					.addClass( "ui-state-highlight" )
+					.find( "p" )
+						.html( "Dropped!" );
+			}
+		});
+	});
+	</script>
+</head>
+<body style="cursor: auto;">
+
+<div id="draggable" class="ui-widget-content ui-draggable ui-draggable-handle" style="position: relative;">
+	<p>I revert when I'm dropped</p>
+</div>
+
+<div id="draggable2" class="ui-widget-content ui-draggable ui-draggable-handle" style="position: relative; left: 0px; top: 0px;">
+	<p>I revert when I'm not dropped</p>
+</div>
+
+<div id="droppable" class="ui-widget-header ui-droppable">
+	<p>Drop me here</p>
+</div>
+
+
+
+
+</body></html>

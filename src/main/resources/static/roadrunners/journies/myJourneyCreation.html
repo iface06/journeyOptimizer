@@ -1,0 +1,126 @@
+
+
+<div class="city-search container">
+    <form ng-submit="saveJourney()" >
+        <div class="starter-template">
+            <h1 class="page-title">Roadrunners</h1>
+            <div id="citys" class="list-group" >
+                <div class="row">
+                    <label for="journey-title">Titel</label><input type="text" id="journey-title" ng-model="journey.title"/>
+                </div>
+                <div class="row">
+                    <label for="journey-distance">Strecke in KM</label><input type="text" id="journey-distance" ng-model="journey.distance"/>
+                </div>
+                <div class="row">
+                    <label for="journey-created-date">Erstellt am: </label><input type="text" id="journey-created-date" ng-model="journey.createdDate" readonly="true"/>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="city-search-field" class="row">
+                            <div class="col-md-12">
+                                <input ng-model="searchString" 
+                                       ng-change="getCity(searchString)"
+                                       id="city-search-string-field" name="city-search-string " class="form-control" placeholder="Name, Email Address, Customer Number..."/>
+                            </div>
+                        </div>
+                        <div class="row city" ng-repeat="city in cities">
+                            <div class="col-md-12">
+                                <a  class="list-group-item" ng-click="addToJourney($index)">
+                                    <div class="row">
+                                        <div class="col-md-12 city-name">                                
+                                            <h4 class="list-group-item-heading">
+                                                <span class="city-attribute">{{city.name}}</span>
+                                            </h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-group-item-text">
+                                        <div class="row">
+                                            <div class="col-md-7 city-address">
+                                                <div class="row">
+                                                    <div class="col-md-3">Landkreis:</div>
+                                                    <div class="col-md-9 street2">{{city.county.name}}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">Bundesland:</div>
+                                                    <div class="col-md-9 ">{{city.state.name}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="row">
+                                                    <div class="col-md-12 city-name">                                
+                                                        Koordinaten
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 city-name">                                
+                                                        <div class="city-coordinates-lat">{{city.lat}}° Nord</div> 
+                                                        <div class="city-coordinates-lng">{{city.lng}}° Ost</div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a ng-click="optimiseJourney()">Berechnen</a>
+                                <input type="submit" value="speichern"/>
+                                <!--<a ng-click="saveJourney()">Speichern</a>-->
+                                <a ng-click="deleteCityList()">Löschen</a>
+                            </div>
+                        </div>
+                        <div class="row city" ng-repeat="city in journey.destinations">
+                            <div class="col-md-12">
+                                <a class="list-group-item" ng-click="deleteFromJourney($index)">
+                                    <div class="row">
+                                        <div class="col-md-12 city-name">                                
+                                            <h4 class="list-group-item-heading">
+                                                <span class="city-attribute">{{city.name}}</span>
+                                            </h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-group-item-text">
+                                        <div class="row">
+                                            <div class="col-md-7 city-address">
+                                                <div class="row">
+                                                    <div class="col-md-3">Landkreis:</div>
+                                                    <div class="col-md-9 street2">{{city.county}}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">Bundesland:</div>
+                                                    <div class="col-md-9 ">{{city.state}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="row">
+                                                    <div class="col-md-12 city-name">                                
+                                                        Koordinaten
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 city-name">                                
+                                                        <div class="city-coordinates-lat">{{city.lat}}° Nord</div> 
+                                                        <div class="city-coordinates-lng">{{city.lng}}° Ost</div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>    
+</div>

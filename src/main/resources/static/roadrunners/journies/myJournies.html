@@ -1,0 +1,21 @@
+<div class="container" >
+    <div class="row create-button-row">
+        <div class="col-sm-12">
+            <a ng-click="createNewJourney()">create new Journey</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="list-group journies">
+                <a class="list-group-item" ng-repeat="journey in journies" ng-click="openJourney(journey.id)">
+                    <h4 class="list-group-item-heading">{{journey.title}}</h4>
+                    <p class="list-group-item-text">
+                    <div>Reisedatum: {{journey.createdDate| date:'dd.MM.yyyy'}}</div>
+                    <div>Reiselänge: {{journey.distance}} km</div>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div> 
+</div>
